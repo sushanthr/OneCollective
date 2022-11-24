@@ -22,9 +22,12 @@ class LoginWidget extends StatelessWidget {
               flex: 4,
               child: Column(
                 children: [
-                  const Image(
-                      image: AssetImage(
-                          "assets/images/OneCollectiveTransparent.png")),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(50.0, 0, 50.0, 10.0),
+                    child: Image(
+                        image: AssetImage(
+                            "assets/images/OneCollectiveTransparent.png")),
+                  ),
                   GradientText("One Collective",
                       style: Theme.of(context).textTheme.headline1,
                       gradient: logoGradient),

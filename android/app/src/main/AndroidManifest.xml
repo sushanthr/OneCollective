@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="social.onecollective.app.one_collective">
    <application
-        android:label="one_collective"
+        android:label="One Collective"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
