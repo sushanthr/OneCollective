@@ -1,16 +1,32 @@
-# one_collective
+# One Collective
 
-Micro Blogging Social Media Network
+Micro Blogging Social Network
 
-## Getting Started
+This is a prototype for an open social network, with interesting properties: 
+- End to End encryption of all content. Safeguarding users from profiling, selling of user data.
+- Explicit data access control.
+  At two levels:
+    - Data can be classified as accessible to public/ signed in users (prevents crawlers from access)/ groups of users / individual users.
+    - All compute on this network happens on the edge device.
+- Fully inspectable source code. 
+  The entire service/ app will be built using client side code - which makes everything the site/app does auditable. 
+- Built using a backend as a service
+  Application will be built using a Firebase as a backend, further limiting any secret sauce backend code.
+- No new identity or login system. Existing identity providers Apple/Google sign in.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Other Salient features
+- Content moderation / Fake News policy
+   - ML models will identify unsafe content and prohibit posting unless the user has significant followers. ML flagged items will not leave the follower group, 
+     unless significant votes mark the item as safe.
+   - Apart from report content buttons. Each content can be ranked for truthfulness. Truthfulness of content will be explicitly surfaced along with likes/dislikes.
+   - Content reporting will be community driven. Reported content will be removed through a process that leverages the viewers and asks them if the content is offensive.
+- Compliance with local laws
+   - Protection from nation state or law enforcement is an explicit non goal. This network should not be a haven for illegal activity. 
+   - Though the content is completely encrypted, the system design should allow for
+      - law enforcement to remove content. (Easy to do, should not require decryption)
+      - Inspect content. (More difficult to achieve since the service does not have decryption keys).
+- Ads
+  - Ads are going to be a necessary evil to fund a storage service. 
+  - However the clients get to pick the ads and run interest topics detection and pull down ads on the client side without any tracking.  
+- Fully localized from day one
+    - Investigate client side automatic translation ML models of posts to connect every human on the planet.
