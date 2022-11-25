@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:one_collective/apple_sign_in.dart';
 import 'package:one_collective/gradient_text.dart';
 import 'package:one_collective/extension_color.dart';
-import 'package:one_collective/google_sign_in_button.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:one_collective/google_sign_in.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -36,17 +36,9 @@ class LoginWidget extends StatelessWidget {
             ],
           ),
           const Spacer(flex: 1),
-          Column(children: [
-            const GoogleSignInButton(),
-            IntrinsicWidth(
-              child: SignInWithAppleButton(
-                onPressed: () {
-                  print("Sign in");
-                },
-                text: AppLocalizations.of(context)!.sign_in_with_apple,
-                height: 55,
-              ),
-            ),
+          Column(children: const [
+            GoogleSignInButton(),
+            AppleSignInButton(),
           ]),
           const Spacer(flex: 1),
         ]),

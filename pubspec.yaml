@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.1.4
   google_sign_in: ^5.0.0
   sign_in_with_apple: ^4.2.0
+  device_info: ^0.4.1+4
 
 
 dev_dependencies:
@@ -96,3 +97,5 @@ flutter:
           weight: 700
   assets:
     - assets/images/
+    - assets/images/google_logo.png
+    - assets/images/OneCollectiveTransparent.png
