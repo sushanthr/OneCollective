@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:one_collective/extension_color.dart';
-import 'package:one_collective/login_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'auth/login_widget.dart';
+import 'utility/extension_color.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,21 +37,22 @@ class MyApp extends StatelessWidget {
               fontSize: 42.0,
               fontWeight: FontWeight.w800,
               fontFamily: 'Manrope',
-              color: HexColor.fromHex("5151c6")),
+              color: HexColor.fromHex('5151c6')),
           headline2: TextStyle(
               fontSize: 32.0,
               fontWeight: FontWeight.bold,
               fontFamily: 'Manrope',
-              color: HexColor.fromHex("5151c6")),
+              color: HexColor.fromHex('5151c6')),
           bodyText1: TextStyle(
               fontSize: 14.0,
               fontFamily: 'Manrope',
-              color: HexColor.fromHex("5151c6")),
+              color: HexColor.fromHex('5151c6')),
         ),
       ),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      onGenerateTitle: (context) => AppLocalizations.of(context)!.app_title,
+      onGenerateTitle: (BuildContext context) =>
+          AppLocalizations.of(context)!.app_title,
       home: const LoginWidget(),
     );
   }

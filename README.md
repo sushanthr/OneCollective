@@ -10,8 +10,8 @@ This is a prototype for an open social network, with interesting properties:
     - All compute on this network happens on the edge device.
 - Fully inspectable source code. 
   The entire service/ app will be built using client side code - which makes everything the site/app does auditable. 
-- Built using a backend as a service
-  Application will be built using a Firebase as a backend, further limiting any secret sauce backend code.
+- Built using a Backend As A Service.
+  Design uses Firebase as a backend, further limiting any secret sauce backend code.
 - No new identity or login system. Existing identity providers Apple/Google sign in.
 
 Other Salient features

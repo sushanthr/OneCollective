@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AppleSignInButton extends StatefulWidget {
   const AppleSignInButton({super.key});
@@ -17,7 +15,6 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
     return IntrinsicWidth(
       child: SignInWithAppleButton(
         onPressed: () {
-          print("hee");
           initiateSignInWithApple();
         },
         text: AppLocalizations.of(context)!.sign_in_with_apple,
@@ -26,14 +23,14 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
     );
   }
 
-  void initiateSignInWithApple() async {
-    final credential = await SignInWithApple.getAppleIDCredential(
+  Future<void> initiateSignInWithApple() async {
+    final AuthorizationCredentialAppleID credential =
+        await SignInWithApple.getAppleIDCredential(
       scopes: [
         AppleIDAuthorizationScopes.email,
         AppleIDAuthorizationScopes.fullName,
       ],
     );
-
     print(credential);
   }
 }

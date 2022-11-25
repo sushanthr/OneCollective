@@ -5,10 +5,10 @@ class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
 
   @override
-  _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
+  GoogleSignInButtonState createState() => GoogleSignInButtonState();
 }
 
-class _GoogleSignInButtonState extends State<GoogleSignInButton> {
+class GoogleSignInButtonState extends State<GoogleSignInButton> {
   bool _isSigningIn = false;
 
   @override
@@ -44,7 +44,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Image(
-                      image: AssetImage("assets/images/google_logo.png"),
+                      image: AssetImage('assets/images/google_logo.png'),
                       height: 35.0,
                     ),
                     Padding(
