@@ -5,6 +5,7 @@ import 'package:one_collective/gradient_text.dart';
 import 'package:one_collective/extension_color.dart';
 import 'package:one_collective/google_sign_in_button.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key});
@@ -29,7 +30,7 @@ class LoginWidget extends StatelessWidget {
                     image: AssetImage(
                         "assets/images/OneCollectiveTransparent.png")),
               ),
-              GradientText("One Collective",
+              GradientText(AppLocalizations.of(context)!.one_collective,
                   style: Theme.of(context).textTheme.headline1,
                   gradient: logoGradient),
             ],
@@ -42,6 +43,7 @@ class LoginWidget extends StatelessWidget {
                 onPressed: () {
                   print("Sign in");
                 },
+                text: AppLocalizations.of(context)!.sign_in_with_apple,
                 height: 55,
               ),
             ),

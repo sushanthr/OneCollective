@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
@@ -32,8 +33,6 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   _isSigningIn = true;
                 });
 
-                // TODO: Add a method call to the Google Sign-In authentication
-
                 setState(() {
                   _isSigningIn = false;
                 });
@@ -43,16 +42,16 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Image(
+                  children: <Widget>[
+                    const Image(
                       image: AssetImage("assets/images/google_logo.png"),
                       height: 35.0,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        'Sign in with Google',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.sign_in_with_google,
+                        style: const TextStyle(
                           fontSize: 20,
                           color: Colors.black54,
                           fontWeight: FontWeight.w600,

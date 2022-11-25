@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:one_collective/extension_color.dart';
 import 'package:one_collective/login_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
               color: HexColor.fromHex("5151c6")),
         ),
       ),
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.app_title,
       home: const LoginWidget(),
     );
   }
