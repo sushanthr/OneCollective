@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:one_collective/gradient_text.dart';
 import 'package:one_collective/extension_color.dart';
@@ -18,31 +20,32 @@ class LoginWidget extends StatelessWidget {
         width: double.infinity,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           const Spacer(flex: 1),
-          Expanded(
-              flex: 4,
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(50.0, 0, 50.0, 10.0),
-                    child: Image(
-                        image: AssetImage(
-                            "assets/images/OneCollectiveTransparent.png")),
-                  ),
-                  GradientText("One Collective",
-                      style: Theme.of(context).textTheme.headline1,
-                      gradient: logoGradient),
-                ],
-              )),
-          const Spacer(flex: 1),
-          const GoogleSignInButton(),
-          IntrinsicWidth(
-            child: SignInWithAppleButton(
-              onPressed: () {
-                print("Sign in");
-              },
-              height: 55,
-            ),
+          Column(
+            children: [
+              Container(
+                constraints: const BoxConstraints(maxWidth: 600),
+                padding: const EdgeInsets.fromLTRB(50.0, 0, 50.0, 10.0),
+                child: const Image(
+                    image: AssetImage(
+                        "assets/images/OneCollectiveTransparent.png")),
+              ),
+              GradientText("One Collective",
+                  style: Theme.of(context).textTheme.headline1,
+                  gradient: logoGradient),
+            ],
           ),
+          const Spacer(flex: 1),
+          Column(children: [
+            const GoogleSignInButton(),
+            IntrinsicWidth(
+              child: SignInWithAppleButton(
+                onPressed: () {
+                  print("Sign in");
+                },
+                height: 55,
+              ),
+            ),
+          ]),
           const Spacer(flex: 1),
         ]),
       ),
