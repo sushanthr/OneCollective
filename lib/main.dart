@@ -1,12 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import 'auth/login_widget.dart';
+import 'home.dart';
 import 'utility/extension_color.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const OneCollectiveApp());
 }
 
@@ -24,7 +29,9 @@ class OneCollectiveApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.app_title,
-      home: const LoginWidget(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? const LoginWidget()
+          : const Home(),
     );
   }
 
