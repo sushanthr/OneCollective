@@ -10,14 +10,26 @@ class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
 
   @override
-  GoogleSignInButtonState createState() => GoogleSignInButtonState();
+  GoogleSignInButtonState createState() => GoogleSignInButtonState.instance;
 }
 
 class GoogleSignInButtonState extends State<GoogleSignInButton> {
+  GoogleSignInButtonState._privateConstructor();
+  static final GoogleSignInButtonState instance =
+      GoogleSignInButtonState._privateConstructor();
+
   bool _isSigningIn = false;
   bool _isSignedIn = false;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _googleSignInAccount;
+
+  void signOut() {
+    _googleSignIn.signOut();
+    setState(() {
+      _isSignedIn = false;
+      _isSigningIn = false;
+    });
+  }
 
   @override
   void initState() {
