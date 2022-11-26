@@ -101,8 +101,11 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: _isSigningIn
-          ? const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+          ? Container(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+              ),
             )
           : OutlinedButton(
               style: ButtonStyle(
