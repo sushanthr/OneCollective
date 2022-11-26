@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import '../utility/extension_color.dart';
 import '../utility/gradient_text.dart';
@@ -15,7 +16,7 @@ class LoginWidget extends StatelessWidget {
       HexColor.fromHex('5151C6'),
       HexColor.fromHex('888BF4'),
     ]);
-    return Scaffold(
+    return PlatformScaffold(
       body: SizedBox(
         width: double.infinity,
         child: Column(children: [
@@ -30,7 +31,11 @@ class LoginWidget extends StatelessWidget {
                         'assets/images/OneCollectiveTransparent.png')),
               ),
               GradientText(AppLocalizations.of(context)!.one_collective,
-                  style: Theme.of(context).textTheme.headline1,
+                  style: const TextStyle(
+                    fontSize: 42.0,
+                    fontWeight: FontWeight.w800,
+                    fontFamily: 'Manrope',
+                  ),
                   gradient: logoGradient),
             ],
           ),
