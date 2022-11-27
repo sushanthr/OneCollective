@@ -9,6 +9,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../home.dart';
+import '../utility/error_flushbar.dart';
 
 class AppleSignInButton extends StatefulWidget {
   const AppleSignInButton({super.key});
@@ -22,7 +23,9 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
   @override
   Widget build(BuildContext context) {
     if (_errorMessage != null) {
-      // Todo: Investigate cross platform snack bar to show these messages.
+      final String errorMessage = _errorMessage.toString();
+      showErrorFlushbar(context,
+          AppLocalizations.of(context)!.error_sign_in_with_apple, errorMessage);
       _errorMessage = null;
     }
     if (FirebaseAuth.instance.currentUser != null) {
@@ -96,9 +99,12 @@ class _AppleSignInButtonState extends State<AppleSignInButton> {
         // is navigated away.
       });
     } catch (e) {
-      setState(() {
-        _errorMessage = e.toString();
-      });
+      final SignInWithAppleAuthorizationException exception =
+          e as SignInWithAppleAuthorizationException;
+      if (exception.code != AuthorizationErrorCode.canceled)
+        setState(() {
+          _errorMessage = e.toString();
+        });
     }
   }
 }

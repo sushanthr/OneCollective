@@ -39,6 +39,7 @@ dependencies:
   google_sign_in: ^5.0.0
   sign_in_with_apple: ^4.2.0
   flutter_platform_widgets: ^2.0.0
+  another_flushbar: ^1.12.29
 
 
 dev_dependencies:

@@ -5,6 +5,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../home.dart';
+import '../utility/error_flushbar.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});
@@ -49,7 +50,10 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
           }
         }
       } catch (e) {
-        // Todo: Find cross platform way of showing snack bar error messages.
+        showErrorFlushbar(
+            context,
+            AppLocalizations.of(context)!.error_sign_in_with_google,
+            e.toString());
       }
     });
     _googleSignIn.signInSilently();
@@ -109,7 +113,10 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
                 try {
                   await _googleSignIn.signIn();
                 } catch (e) {
-                  // TODO: Find a cross platform snackbar solution.
+                  showErrorFlushbar(
+                      context,
+                      AppLocalizations.of(context)!.error_sign_in_with_google,
+                      e.toString());
                 }
                 setState(() {
                   _isSigningIn = false;
