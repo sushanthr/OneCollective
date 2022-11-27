@@ -14,5 +14,13 @@
     "sign_in_with_apple": "Sign in with Apple",
     "@sign_in_with_apple": {
       "description": "Sign in prompt on login screen."
+    },
+    "error_sign_in_with_apple": "Apple sign in error: ",
+    "@error_sign_in_with_apple": {
+      "description": "Snack bar message when there is a sign in error with Apple sign in."
+    },
+    "error_sign_in_with_google": "Google sign in error: ",
+    "@error_sign_in_with_google": {
+      "description": "Snack bar message when there is a sign in error with Google sign in."
     }
 }

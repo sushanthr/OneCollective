@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  crypto: ^3.0.1
   cupertino_icons: ^1.0.2
   firebase_core: ^2.3.0
   firebase_auth: ^4.1.4

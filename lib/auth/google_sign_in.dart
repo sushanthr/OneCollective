@@ -48,26 +48,8 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
             });
           }
         }
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'account-exists-with-different-credential') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            _customSnackBar(
-              content: 'The account already exists with a different credential',
-            ),
-          );
-        } else if (e.code == 'invalid-credential') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            _customSnackBar(
-              content: 'Error occurred while accessing credentials. Try again.',
-            ),
-          );
-        }
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          _customSnackBar(
-            content: 'Error occurred using Google Sign In. Try again.',
-          ),
-        );
+        // Todo: Find cross platform way of showing snack bar error messages.
       }
     });
     _googleSignIn.signInSilently();
@@ -88,14 +70,6 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
     final UserCredential userCredentials =
         await FirebaseAuth.instance.signInWithCredential(credential);
     return userCredentials.user;
-  }
-
-  static SnackBar _customSnackBar({required String content}) {
-    return SnackBar(
-      content: Text(
-        content,
-      ),
-    );
   }
 
   @override
@@ -135,12 +109,7 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
                 try {
                   await _googleSignIn.signIn();
                 } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    _customSnackBar(
-                      content:
-                          'Error occurred using Google Sign In. Try again.',
-                    ),
-                  );
+                  // TODO: Find a cross platform snackbar solution.
                 }
                 setState(() {
                   _isSigningIn = false;
