@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../utility/extension_color.dart';
+import '../utility/app_theme.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
@@ -15,7 +15,7 @@ class SearchBar extends StatelessWidget {
       child: Container(
         height: 37,
         decoration: BoxDecoration(
-            color: HexColor.fromHex('F3F5F7'),
+            color: AppTheme.instance.backgroundDimColor,
             borderRadius: const BorderRadius.all(Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
@@ -28,11 +28,11 @@ class SearchBar extends StatelessWidget {
               child: PlatformTextField(
                 makeCupertinoDecorationNull: true,
                 hintText: AppLocalizations.of(context)!.search_hint,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: AppTheme.instance.foregroundColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w200,
-                  fontFamily: 'Manrope',
+                  fontFamily: AppTheme.instance.fontFamily,
                 ),
               ),
             )
