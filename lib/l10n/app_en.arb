@@ -22,5 +22,9 @@
     "error_sign_in_with_google": "Google sign in error",
     "@error_sign_in_with_google": {
       "description": "Snack bar message when there is a sign in error with Google sign in."
+    },
+    "search_hint" : "Search",
+    "@search_hint": {
+      "description": "Hint text for the top search bar."
     }
 }

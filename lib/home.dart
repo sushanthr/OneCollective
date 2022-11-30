@@ -1,9 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
-import 'auth/google_sign_in.dart';
+import 'components/search_bar.dart';
+import 'utility/extension_color.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,15 +13,21 @@ class Home extends StatefulWidget {
 class _homeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return PlatformElevatedButton(
-      child: PlatformText('Log Out'),
-      onPressed: () {
-        FirebaseAuth.instance.signOut();
-        GoogleSignInButtonState.instance.signOut();
-        Future.microtask(() {
-          Navigator.pop(context);
-        });
-      },
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 44,
+          ),
+          const SearchBar(),
+          Expanded(
+            child: Container(
+              color: HexColor.fromHex('F3F5F7'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
