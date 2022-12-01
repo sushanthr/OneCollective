@@ -10,33 +10,36 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
-      child: Container(
-        height: 37,
-        decoration: BoxDecoration(
-            color: AppTheme.instance.backgroundDimColor,
-            borderRadius: const BorderRadius.all(Radius.circular(20))),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
-          child: Row(children: [
-            SvgPicture.asset(
-              'assets/icons/Search.svg',
-              width: 20,
-            ),
-            Expanded(
-              child: PlatformTextField(
-                makeCupertinoDecorationNull: true,
-                hintText: AppLocalizations.of(context)!.search_hint,
-                style: TextStyle(
-                  color: AppTheme.instance.foregroundColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w200,
-                  fontFamily: AppTheme.instance.fontFamily,
-                ),
+    return Container(
+      color: AppTheme.instance.backgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+        child: Container(
+          height: 37,
+          decoration: BoxDecoration(
+              color: AppTheme.instance.backgroundDimColor,
+              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
+            child: Row(children: [
+              SvgPicture.asset(
+                'assets/icons/Search.svg',
+                width: 20,
               ),
-            )
-          ]),
+              Expanded(
+                child: PlatformTextField(
+                  makeCupertinoDecorationNull: true,
+                  hintText: AppLocalizations.of(context)!.search_hint,
+                  style: TextStyle(
+                    color: AppTheme.instance.foregroundColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w200,
+                    fontFamily: AppTheme.instance.fontFamily,
+                  ),
+                ),
+              )
+            ]),
+          ),
         ),
       ),
     );
