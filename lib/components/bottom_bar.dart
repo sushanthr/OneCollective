@@ -21,41 +21,60 @@ class _BottomBarState extends State<BottomBar> {
       homeState.setHomePage(page);
     }
 
-    return ClipPath(
-      clipper: CustomClipPath(),
-      child: Container(
-        height: 75,
-        color: AppTheme.instance.backgroundColor,
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () => switchPage(HomePage.home),
-                child: SvgPicture.asset(currentPage == HomePage.home
-                    ? 'assets/icons/HomeColored.svg'
-                    : 'assets/icons/Home.svg'),
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        Positioned(
+            top: 0,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+              child: SvgPicture.asset('assets/icons/post.svg'),
+            )),
+        Column(
+          children: <Widget>[
+            Container(
+              height: 35,
+            ),
+            ClipPath(
+              clipper: CustomClipPath(),
+              child: Container(
+                height: 75,
+                color: AppTheme.instance.backgroundColor,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () => switchPage(HomePage.home),
+                        child: SvgPicture.asset(currentPage == HomePage.home
+                            ? 'assets/icons/HomeColored.svg'
+                            : 'assets/icons/Home.svg'),
+                      ),
+                      GestureDetector(
+                        onTap: () => switchPage(HomePage.messages),
+                        child: SvgPicture.asset(currentPage == HomePage.messages
+                            ? 'assets/icons/FourGridColored.svg'
+                            : 'assets/icons/FourGrid.svg'),
+                      ),
+                      Container(width: 82),
+                      GestureDetector(
+                        onTap: () => switchPage(HomePage.notifications),
+                        child: SvgPicture.asset(
+                            currentPage == HomePage.notifications
+                                ? 'assets/icons/BellColored.svg'
+                                : 'assets/icons/Bell.svg'),
+                      ),
+                      GestureDetector(
+                        onTap: () => switchPage(HomePage.profile),
+                        child: SvgPicture.asset(currentPage == HomePage.profile
+                            ? 'assets/icons/PersonColored.svg'
+                            : 'assets/icons/Person.svg'),
+                      ),
+                    ]),
               ),
-              GestureDetector(
-                onTap: () => switchPage(HomePage.messages),
-                child: SvgPicture.asset(currentPage == HomePage.messages
-                    ? 'assets/icons/FourGridColored.svg'
-                    : 'assets/icons/FourGrid.svg'),
-              ),
-              Container(width: 82),
-              GestureDetector(
-                onTap: () => switchPage(HomePage.notifications),
-                child: SvgPicture.asset(currentPage == HomePage.notifications
-                    ? 'assets/icons/BellColored.svg'
-                    : 'assets/icons/Bell.svg'),
-              ),
-              GestureDetector(
-                onTap: () => switchPage(HomePage.profile),
-                child: SvgPicture.asset(currentPage == HomePage.profile
-                    ? 'assets/icons/PersonColored.svg'
-                    : 'assets/icons/Person.svg'),
-              ),
-            ]),
-      ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
