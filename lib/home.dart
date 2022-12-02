@@ -8,13 +8,27 @@ class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _homeState();
+  State<Home> createState() => HomeState();
 }
 
-class _homeState extends State<Home> {
+enum HomePage { home, messages, notifications, profile }
+
+class HomeState extends State<Home> {
+  HomePage _page = HomePage.home;
+
+  HomePage getHomePage() {
+    return _page;
+  }
+
+  void setHomePage(HomePage page) {
+    setState(() {
+      _page = page;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Stack(children: <Widget>[
       Positioned(
         child: Column(
           children: <Widget>[
@@ -31,7 +45,8 @@ class _homeState extends State<Home> {
           ],
         ),
       ),
-      const Positioned(bottom: 0, left: 0, right: 0, child: BottomBar())
+      // ignore: prefer_const_constructors
+      Positioned(bottom: 0, left: 0, right: 0, child: BottomBar())
     ]);
   }
 }

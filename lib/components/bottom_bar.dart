@@ -1,17 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utility/app_theme.dart';
+import '../home.dart';
 
-class BottomBar extends StatelessWidget {
+class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
 
   @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  @override
   Widget build(BuildContext context) {
+    final HomeState? homeState = context.findAncestorStateOfType<HomeState>();
+    HomePage currentPage = homeState!.getHomePage();
+
+    void switchPage(HomePage page) {
+      homeState.setHomePage(page);
+    }
+
     return ClipPath(
       clipper: CustomClipPath(),
       child: Container(
         height: 75,
         color: AppTheme.instance.backgroundColor,
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              GestureDetector(
+                onTap: () => switchPage(HomePage.home),
+                child: SvgPicture.asset(currentPage == HomePage.home
+                    ? 'assets/icons/HomeColored.svg'
+                    : 'assets/icons/Home.svg'),
+              ),
+              GestureDetector(
+                onTap: () => switchPage(HomePage.messages),
+                child: SvgPicture.asset(currentPage == HomePage.messages
+                    ? 'assets/icons/FourGridColored.svg'
+                    : 'assets/icons/FourGrid.svg'),
+              ),
+              Container(width: 82),
+              GestureDetector(
+                onTap: () => switchPage(HomePage.notifications),
+                child: SvgPicture.asset(currentPage == HomePage.notifications
+                    ? 'assets/icons/BellColored.svg'
+                    : 'assets/icons/Bell.svg'),
+              ),
+              GestureDetector(
+                onTap: () => switchPage(HomePage.profile),
+                child: SvgPicture.asset(currentPage == HomePage.profile
+                    ? 'assets/icons/PersonColored.svg'
+                    : 'assets/icons/Person.svg'),
+              ),
+            ]),
       ),
     );
   }
